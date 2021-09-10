@@ -4,7 +4,9 @@
  * @enum {String}
  */
 export enum searchStatus {
-    TYPE = 'type',
+    AUTHOR = 'author',
+    PROJECT = 'project',
+    TAG = 'tag',
 }
 
 export default searchStatus
