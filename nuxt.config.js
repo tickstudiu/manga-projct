@@ -20,7 +20,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'simple-login',
+    title: 'manga-project',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -72,7 +72,41 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal-nuxt
     'cookie-universal-nuxt',
+    //
+    'nuxt-i18n',
   ],
+
+  i18n: {
+    locales: [
+        {
+            name: 'English',
+            code: 'en',
+            iso: 'en-US',
+            file: 'en.ts'
+        }
+    ],
+    defaultLocale: 'en',
+    fallbackLocale: 'en',
+    // rootRedirect: 'en',
+    detectBrowserLanguage: false,
+    langDir: 'i18n/',
+    lazy: true,
+    strategy: 'no_prefix',
+    vuex: {
+        // Module namespace
+        moduleName: 'i18n',
+
+        // If enabled, current app's locale is synced with nuxt-i18n store module
+        syncLocale: false,
+
+        // If enabled, current translation messages are synced with nuxt-i18n store module
+        syncMessages: false,
+
+        // Mutation to commit to set route parameters translations
+        syncRouteParams: true
+    },
+    seo: true
+},
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

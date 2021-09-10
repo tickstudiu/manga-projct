@@ -27,6 +27,7 @@
       "@nuxt/types",
       "@types/node",
       "webpack-env",
+      "nuxt-i18n",
       "@nuxtjs/axios",
       "@types/webpack-env",
       "cookie-universal-nuxt"
