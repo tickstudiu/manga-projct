@@ -1,17 +1,56 @@
 {
-  "users": [
+  "tags": [
     {
       "id": 1,
-      "username": "username",
-      "password": "password"
+      "tag": "action"
+    },
+    {
+      "id": 2,
+      "tag": "adventure"
+    },
+    {
+      "id": 3,
+      "tag": "fantasy"
     }
   ],
-  "me": [
+  "authors": [
     {
       "id": 1,
-      "username": "username",
-      "name": "username#001",
-      "details": "this is my first user in this website"
+      "author": "author"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "tags": [
+        1,
+        3
+      ],
+      "authors": [
+        1
+      ],
+      "title": "title",
+      "title_slug": "title",
+      "status": "ongoing",
+      "summary": "summary"
+    }
+  ],
+  "chapters": [
+    {
+      "id": 1,
+      "project_id": 1,
+      "count": 10,
+      "view": 0,
+      "status": "open",
+      "name": "name",
+      "pages": [
+        {
+          "id": 1,
+          "pageUrl": "/",
+          "height": 1200,
+          "width": 800
+        }
+      ]
     }
   ]
 }
