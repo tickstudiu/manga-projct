@@ -9,38 +9,44 @@
       <p>{{ activeLanguage.code }}</p>
     </div>
 
-    <select name="cars" id="cars">
-      <option
-        v-for="(language, index) in languages"
-        :key="index"
-        @click="changeLocale(language)"
-      >
-        <template>
+    <client-only>
+      <select v-model="code">
+        <option
+          v-for="(language, index) in languages"
+          :key="index"
+          :value="language.code"
+        >
           <img
             class="object-contain w-4 h-auto"
             :src="language.flag.src"
             :alt="language.flag.alt"
           />
           <p>{{ language.name }}</p>
-        </template>
-      </option>
-    </select>
+        </option>
+      </select>
+    </client-only>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { SupportedLanguages } from '@/enums/languages'
-import { SupportedLanguage } from '@/types/languages'
 export default Vue.extend({
   data() {
     return {
+      code: 'th',
       languages: SupportedLanguages,
     }
   },
 
+  watch: {
+    code(Language) {
+      this.changeLocale(Language)
+    },
+  },
+
   computed: {
-    activeLanguage() {
+    activeLanguage(): any {
       return SupportedLanguages.find(
         (value) => value.code === this.$i18n.locale
       )
@@ -48,11 +54,11 @@ export default Vue.extend({
   },
 
   methods: {
-    changeLocale(language: SupportedLanguage) {
-      if (this.$i18n.locale === language.code) {
+    changeLocale(code: string) {
+      if (this.$i18n.locale === code) {
         return
       }
-      this.$i18n.setLocale(language.code)
+      this.$i18n.setLocale(code)
     },
   },
 })

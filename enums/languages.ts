@@ -10,6 +10,16 @@ export const SupportedLanguages: SupportedLanguage[] = [
             alt: 'England flag',
             default: true
         }
+    },
+    {
+        name: 'Thai',
+        code: 'th',
+        alias: 'TH',
+        flag: {
+            src: '/img/flag/rounded/th.svg',
+            alt: 'Thai flag',
+            default: true
+        }
     }
 ]
 

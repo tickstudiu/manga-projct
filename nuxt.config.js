@@ -76,37 +76,44 @@ export default {
     'nuxt-i18n',
   ],
 
+  // nuxt i18n
   i18n: {
     locales: [
-        {
-            name: 'English',
-            code: 'en',
-            iso: 'en-US',
-            file: 'en.ts'
-        }
+      {
+        name: 'Thai',
+        code: 'th',
+        iso: 'th-TH',
+        file: 'th.ts',
+      },
+      {
+        name: 'English',
+        code: 'en',
+        iso: 'en-US',
+        file: 'en.ts',
+      },
     ],
-    defaultLocale: 'en',
-    fallbackLocale: 'en',
-    // rootRedirect: 'en',
+    defaultLocale: 'th',
+    fallbackLocale: 'th',
     detectBrowserLanguage: false,
+    // rootRedirect: 'th',
     langDir: 'i18n/',
     lazy: true,
     strategy: 'no_prefix',
     vuex: {
-        // Module namespace
-        moduleName: 'i18n',
+      // Module namespace
+      moduleName: 'i18n',
 
-        // If enabled, current app's locale is synced with nuxt-i18n store module
-        syncLocale: false,
+      // If enabled, current app's locale is synced with nuxt-i18n store module
+      syncLocale: false,
 
-        // If enabled, current translation messages are synced with nuxt-i18n store module
-        syncMessages: false,
+      // If enabled, current translation messages are synced with nuxt-i18n store module
+      syncMessages: false,
 
-        // Mutation to commit to set route parameters translations
-        syncRouteParams: true
+      // Mutation to commit to set route parameters translations
+      syncRouteParams: true,
     },
-    seo: true
-},
+    seo: true,
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
