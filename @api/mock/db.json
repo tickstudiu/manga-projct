@@ -29,10 +29,11 @@
       "author": "author"
     }
   ],
-  "projects": [
+  "books": [
     {
       "id": 1,
       "categoryId": 1,
+      "isNew": false,
       "tags": [
         1,
         3
