@@ -114,7 +114,7 @@
     <template v-else> loading... </template>
 
     <!-- pagination -->
-    <Pagination class="mb-6"
+    <Pagination
       @next="changePage((Number($route.query.page) || 1) + 1)"
       @prev="changePage((Number($route.query.page) || 1) - 1)"
     />
@@ -251,6 +251,8 @@ export default Vue.extend({
 </script>
 
 <style lang="sass" scoped>
+.book-list
+  @apply py-6 px-4
 .item
   &:not(.active):hover
     @apply underline

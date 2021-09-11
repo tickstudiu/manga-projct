@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between">
+  <div class="flex justify-between bg-gray-200 py-3 px-4">
     <main>
       <nuxt-link
         v-for="item in menu"
@@ -36,7 +36,7 @@ export default Vue.extend({
 
 <style lang="sass" scoped>
 .link
-  @apply text-blue-500
+  @apply text-black
 
   &:hover
     @apply underline

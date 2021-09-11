@@ -10,17 +10,16 @@
     </div>
 
     <!-- books list -->
-    <template v-if="!isLoading">
+    <template v-if="!isLoading && books.length">
       <BookCard
-        class="mb-3"
+        class="mb-6"
         v-for="book in books"
         :key="book.title"
         :book="book"
       />
     </template>
-    <template v-else> ...loading </template>
-
-    <hr class="my-6" />
+    <template v-else-if="!books.length && !isLoading"> empty </template>
+    <template v-else> loading... </template>
 
     <!-- all chapters order by dec -->
     <div class="flex justify-between items-baseline mb-6">
@@ -28,15 +27,16 @@
     </div>
 
     <!-- chapters list -->
-    <template v-if="!isLoading">
+    <template v-if="!isLoading && chapters.length">
       <ChapterCard
-        class="mb-3"
+        class="mb-6"
         v-for="(chapter, index) in chapters"
         :key="index"
         :chapter="chapter"
       />
     </template>
-    <template v-else>...loading</template>
+    <template v-else-if="!chapters.length && !isLoading"> empty </template>
+    <template v-else> loading... </template>
   </div>
 </template>
 
@@ -60,3 +60,8 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style lang="sass" scoped>
+.home
+  @apply py-6 px-4
+</style>
