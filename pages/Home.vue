@@ -15,8 +15,10 @@
     <!-- new book -->
     <div class="flex justify-between items-baseline">
       <h2>new books</h2>
-      <nuxt-link to="/" class="hover:underline"> more </nuxt-link>
+      <nuxt-link to="/books?filter=new" class="hover:underline"> more </nuxt-link>
     </div>
+
+    <!-- books list -->
     <div>
       <BookCard class="mb-3"/>
       <BookCard class="mb-3"/>
@@ -28,12 +30,14 @@
     <!-- all chapters order by dec -->
     <div class="flex justify-between items-baseline">
       <h2>last updated chapters</h2>
-      <nuxt-link to="/" class="hover:underline"> more </nuxt-link>
+      <nuxt-link to="/chapters?filter=last-updated" class="hover:underline"> more </nuxt-link>
     </div>
+
+    <!-- chapters list -->
     <div>
-      <BookCard class="mb-3"/>
-      <BookCard class="mb-3"/>
-      <BookCard class="mb-3"/>
+      <ChapterCard class="mb-3"/>
+      <ChapterCard class="mb-3"/>
+      <ChapterCard class="mb-3"/>
     </div>
   </div>
 </template>
@@ -41,10 +45,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import BookCard from '@/components/books/BookCard.vue'
+import ChapterCard from '@/components/chapters/ChapterCard.vue'
 import {searchStatus} from '@/enums/searchTypes'
 export default Vue.extend({
   components: {
     BookCard,
+    ChapterCard,
   },
 
   data(){
