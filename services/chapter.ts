@@ -1,13 +1,15 @@
+import { pagination } from '@/config/pagination'
+
 export default ($axios: any) => {
     return {
-        all() {
-            return $axios.$get(`/chapters`)
+        all({ limit = pagination.limit }: { limit?: number }) {
+            return $axios.$get(`/chapters?_limit=${limit}`)
         },
         byId({ id }: { id: string }) {
             return $axios.$get(`/chapters/${id}`)
         },
-        last() {
-            return $axios.$get(`/chapters?_sort=id&_order=desc`)
+        last({ limit = pagination.limit }: { limit?: number }) {
+            return $axios.$get(`/chapters?_sort=id&_order=desc&_limit=${limit}`)
         }
     }
 }

@@ -25,8 +25,8 @@ export default {
             commit('SET_LOADING', true)
             try {
                 const { app }: any = this
-                const responseChapters = await app.$services.chapter.last()
-                const responseBooks = await app.$services.book.allNew()
+                const responseChapters = await app.$services.chapter.last({})
+                const responseBooks = await app.$services.book.allNew({})
 
                 commit('SET_CHAPTERS', responseChapters)
                 commit('SET_BOOKS', responseBooks)
