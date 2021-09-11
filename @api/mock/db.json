@@ -33,7 +33,7 @@
     {
       "id": 1,
       "categoryId": 1,
-      "isNew": false,
+      "isNew": true,
       "tags": [
         1,
         3
@@ -50,11 +50,27 @@
   "chapters": [
     {
       "id": 1,
-      "projectId": 1,
+      "bookId": 1,
       "countPage": 1,
       "view": 0,
       "status": "open",
       "name": "name",
+      "pages": [
+        {
+          "id": 1,
+          "pageUrl": "/",
+          "height": 1200,
+          "width": 800
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "bookId": 1,
+      "countPage": 1,
+      "view": 0,
+      "status": "open",
+      "name": "name 2",
       "pages": [
         {
           "id": 1,

@@ -6,5 +6,8 @@ export default ($axios: any) => {
         byId({ id }: { id: string }) {
             return $axios.$get(`/chapters/${id}`)
         },
+        last() {
+            return $axios.$get(`/chapters?_sort=id&_order=desc`)
+        }
     }
 }

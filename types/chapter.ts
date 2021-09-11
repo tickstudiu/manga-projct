@@ -7,7 +7,7 @@ export interface PageItem {
 
 export interface ChapterItem {
     id: number
-    projectId: number
+    bookId: number
     countPage: number
     view: number
     status: string

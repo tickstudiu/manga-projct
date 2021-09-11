@@ -12,7 +12,7 @@ export default {
         SET_LOADING(state: any, payload: boolean = false) {
             state.isLoading = payload
         },
-        SET_CHAPTERS(state: any, payload: ChapterItem[]){
+        SET_CHAPTERS(state: any, payload: ChapterItem[]) {
             state.chapters = payload
         },
         SET_BOOKS(state: any, payload: BookItem[]) {
@@ -25,8 +25,8 @@ export default {
             commit('SET_LOADING', true)
             try {
                 const { app }: any = this
-                const responseChapters = await app.$services.chapter.all()
-                const responseBooks = await app.$services.book.all()
+                const responseChapters = await app.$services.chapter.last()
+                const responseBooks = await app.$services.book.allNew()
 
                 commit('SET_CHAPTERS', responseChapters)
                 commit('SET_BOOKS', responseBooks)
