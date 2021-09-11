@@ -5,7 +5,7 @@ export interface PageItem {
     pageUrl: string
 }
 
-export interface BookItem {
+export interface ChapterItem {
     id: number
     projectId: number
     countPage: number

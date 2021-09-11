@@ -1,10 +1,10 @@
 export default ($axios: any) => {
     return {
         all() {
-            return $axios.$get(`/projects`)
+            return $axios.$get(`/books`)
         },
         byId({ id }: { id: string }) {
-            return $axios.$get(`/projects/${id}`)
+            return $axios.$get(`/books/${id}`)
         },
     }
 }
