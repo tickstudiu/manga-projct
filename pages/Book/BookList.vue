@@ -1,7 +1,7 @@
 <template>
   <div class="book-list">
     <!-- search form -->
-    <form @submit.prevent="onSubmit" class="flex gap-6">
+    <form @submit.prevent="onSubmit" class="flex gap-6 mb-6">
       <input
         type="text"
         placeholder="search"
@@ -104,7 +104,7 @@
     <!-- book list -->
     <template v-if="!isLoading && books.length">
       <BookCard
-        class="mb-3"
+        class="mb-6"
         v-for="book in books"
         :key="book.title"
         :book="book"
@@ -114,7 +114,7 @@
     <template v-else> loading... </template>
 
     <!-- pagination -->
-    <Pagination
+    <Pagination class="mb-6"
       @next="changePage((Number($route.query.page) || 1) + 1)"
       @prev="changePage((Number($route.query.page) || 1) - 1)"
     />
@@ -174,7 +174,7 @@ export default Vue.extend({
 
   methods: {
     onSubmit() {
-      window.location.href = `/search?type=${this.status}&value=${this.keyword}`
+      window.location.href = `/search?type=${this.type}&value=${this.keyword}`
     },
 
     changeType(value: string) {
