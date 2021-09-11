@@ -24,27 +24,27 @@ const routes = [
   },
   {
     path: '/categories',
-    name: 'Category',
+    name: 'Categories',
     component: Category,
   },
   {
     path: '/books',
-    name: 'Book',
+    name: 'Books',
     component: BookList,
   },
   {
     path: '/books/:book_id',
-    name: 'Book',
+    name: 'BooksDetail',
     component: BookDetail,
   },
   {
     path: '/chapters',
-    name: 'Chapter',
+    name: 'Chapters',
     component: ChapterList,
   },
   {
     path: '/chapters/:chapter_id',
-    name: 'Chapter',
+    name: 'ChaptersDetail',
     component: ChapterDetail,
   },
 ]

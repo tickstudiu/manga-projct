@@ -13,7 +13,7 @@ export const menu: Menu[] = [
     {
         name: 'category',
         link: {
-            name: 'Category',
+            name: 'Categories',
         },
     },
 ]
