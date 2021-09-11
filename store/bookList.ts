@@ -31,19 +31,42 @@ export default {
     },
 
     actions: {
-        async fetch({ commit }: any) {
-            commit('SET_LOADING', true)
+        async fetchInit({ commit }: any,) {
             try {
                 const { app }: any = this
-                const responseBooks = await app.$services.book.allNew({})
                 const responseStatus = await app.$services.status.all({})
                 const responseTags = await app.$services.tag.all({})
                 const responseCategories = await app.$services.category.all({})
 
-                commit('SET_BOOKS', responseBooks)
                 commit('SET_STATUS', responseStatus)
                 commit('SET_TAGS', responseTags)
                 commit('SET_CATEGORIES', responseCategories)
+            } catch {
+                // do something
+            }
+        },
+
+        async fetch(
+            { commit, state, dispatch }: any,
+            { type = 'new', tag = 'all', category = 'all', status = 'all' }:
+                { type?: string, tag?: string, category?: string, status?: string }
+        ) {
+            commit('SET_LOADING', true)
+
+            try {
+                const { app }: any = this
+
+                if (!state.status.length || !state.categories.length || !state.tags.length) {
+                    await dispatch('fetchInit')
+                }
+
+                const filterStatus = state.status.find((item: StatusItem) => item.status === status)
+                const filterCategory = state.categories.find((item: CategoryItem) => item.category === category)
+                const filterTag = state.tags.find((item: TagItem) => item.tag === tag)
+
+                const responseBooks = await app.$services.book.allNew({  tagId: filterTag.id, categoryId: filterCategory.id, statusId: filterStatus.id })
+
+                commit('SET_BOOKS', responseBooks)
 
                 commit('SET_LOADING')
             } catch {

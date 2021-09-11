@@ -8,8 +8,8 @@ export default ($axios: any) => {
         byId({ id }: { id: string }) {
             return $axios.$get(`/books/${id}`)
         },
-        allNew({ limit = pagination.limit }: { limit?: number }) {
-            return $axios.$get(`/books?isNew=true&_limit=${limit}`)
+        allNew({ limit = pagination.limit, tagId = 1, categoryId = 1, statusId = 1 }: { limit?: number, tagId?: number, categoryId?: number, statusId?: number }) {
+            return $axios.$get(`/books?isNew=true&_limit=${limit}&tags_like=${tagId}&categories_like=${categoryId}&status_like=${statusId}`)
         }
     }
 }

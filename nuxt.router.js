@@ -7,7 +7,6 @@ import Category from '~/pages/Category.vue'
 import BookDetail from '~/pages/Book/BookDetail.vue'
 import BookList from '~/pages/Book/BookList.vue'
 import ChapterDetail from '~/pages/Chapter/ChapterDetail.vue'
-import ChapterList from '~/pages/Chapter/ChapterList.vue'
 
 Vue.use(Router)
 
@@ -36,11 +35,6 @@ const routes = [
     path: '/books/:book_id',
     name: 'BooksDetail',
     component: BookDetail,
-  },
-  {
-    path: '/chapters',
-    name: 'Chapters',
-    component: ChapterList,
   },
   {
     path: '/chapters/:chapter_id',

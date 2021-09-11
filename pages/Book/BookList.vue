@@ -36,8 +36,7 @@
           @keydown="toggleFilter = !toggleFilter"
           :disabled="isLoading"
         >
-          <template v-if="!isLoading"> toggle </template>
-          <template v-else> loading... </template>
+          toggle
         </button>
       </div>
 
@@ -52,13 +51,6 @@
             >
               new
             </li>
-            <li
-              class="item"
-              :class="{ active: queryType === 'top-view' }"
-              @click.prevent="changeType('top-view')"
-            >
-              top view
-            </li>
           </ul>
         </div>
 
@@ -70,7 +62,7 @@
               :key="item.category"
               class="item"
               :class="{ active: queryCategory === item.category }"
-              @click.prevent="changeCategory(item)"
+              @click.prevent="changeCategory(item.category)"
             >
               {{ item.category }}
             </li>
@@ -85,7 +77,7 @@
               :key="item.status"
               class="item"
               :class="{ active: queryStatus === item.status }"
-              @click.prevent="changeStatus(item)"
+              @click.prevent="changeStatus(item.status)"
             >
               {{ item.status }}
             </li>
@@ -100,7 +92,7 @@
               :key="item.tag"
               class="item"
               :class="{ active: queryTag === item.tag }"
-              @click.prevent="changeTag(item)"
+              @click.prevent="changeTag(item.tag)"
             >
               {{ item.tag }}
             </li>
@@ -110,7 +102,7 @@
     </div>
 
     <!-- book list -->
-    <template v-if="!isLoading">
+    <template v-if="!isLoading && books.length">
       <BookCard
         class="mb-3"
         v-for="book in books"
@@ -118,6 +110,7 @@
         :book="book"
       />
     </template>
+    <template v-else-if="!books.length && !isLoading"> empty </template>
     <template v-else> loading... </template>
   </div>
 </template>
@@ -142,7 +135,7 @@ export default Vue.extend({
   },
 
   async fetch() {
-    await this.$store.dispatch('bookList/fetch')
+    await this.$store.dispatch('bookList/fetch', this.$route.query)
   },
 
   computed: {
@@ -177,43 +170,59 @@ export default Vue.extend({
     },
 
     changeType(value: string) {
-      this.$router.push({
-        path: this.$route.path,
-        query: {
-          ...this.$route.query,
-          type: value.toString(),
-        },
-      })
+      this.$router
+        .push({
+          path: this.$route.path,
+          query: {
+            ...this.$route.query,
+            type: value,
+          },
+        })
+        .then(() => {
+          this.$fetch()
+        })
     },
 
-    changeTag(value: any) {
-      this.$router.push({
-        path: this.$route.path,
-        query: {
-          ...this.$route.query,
-          tag: value.tag.toString(),
-        },
-      })
-    },
-    
-    changeCategory(value: any) {
-      this.$router.push({
-        path: this.$route.path,
-        query: {
-          ...this.$route.query,
-          category: value.category.toString(),
-        },
-      })
+    changeTag(value: string) {
+      this.$router
+        .push({
+          path: this.$route.path,
+          query: {
+            ...this.$route.query,
+            tag: value,
+          },
+        })
+        .then(() => {
+          this.$fetch()
+        })
     },
 
-    changeStatus(value: any) {
-      this.$router.push({
-        path: this.$route.path,
-        query: {
-          ...this.$route.query,
-          status: value.status.toString(),
-        },
-      })
+    changeCategory(value: string) {
+      this.$router
+        .push({
+          path: this.$route.path,
+          query: {
+            ...this.$route.query,
+            category: value,
+          },
+        })
+        .then(() => {
+          this.$fetch()
+        })
+    },
+
+    changeStatus(value: string) {
+      this.$router
+        .push({
+          path: this.$route.path,
+          query: {
+            ...this.$route.query,
+            status: value,
+          },
+        })
+        .then(() => {
+          this.$fetch()
+        })
     },
   },
 })
