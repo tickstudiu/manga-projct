@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from '~/pages/Home.vue'
 import Search from '~/pages/Search.vue'
+import Category from '~/pages/Category.vue'
 import Project from '~/pages/Project.vue'
 import Chapter from '~/pages/Chapter.vue'
 
@@ -20,12 +21,17 @@ const routes = [
     component: Search,
   },
   {
-    path: '/project/:project_id',
+    path: '/:category',
+    name: 'Category',
+    component: Category,
+  },
+  {
+    path: '/:category/:project_id',
     name: 'Project',
     component: Project,
   },
   {
-    path: '/project/:project_id/:chapter_id',
+    path: '/:category/:project_id/:chapter_id',
     name: 'Chapter',
     component: Chapter,
   },

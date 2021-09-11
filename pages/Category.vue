@@ -1,8 +1,7 @@
 <template>
   <div class="search">
-    Project
+    Category
     <p>{{ $route.params.category }}</p>
-    <p>{{ $route.params.project_id }}</p>
   </div>
 </template>
 
