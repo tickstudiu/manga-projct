@@ -1,15 +1,23 @@
 <template>
   <div class="border p-3 cursor-pointer" @click="chapterUrl">
-    <h6>{{chapter.name}}</h6>
-    <p>view: {{chapter.view}}</p>
-    <p>bookId: {{chapter.bookId}}</p>
+    <h6 class="mb-3">{{ chapter.name }}</h6>
+    <p class="mb-3">view: {{ chapter.view }}</p>
+    <div class="flex gap-3 mb-3">
+      <p>book:</p>
+      <ChapterBook :id="chapter.bookId" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, { PropOptions } from 'vue'
 import { ChapterItem } from '@/types/chapter'
+import ChapterBook from '@/components/chapters/ChapterBook.vue'
 export default Vue.extend({
+  components: {
+    ChapterBook
+  },
+
   props: {
     chapter: {
       type: Object,
