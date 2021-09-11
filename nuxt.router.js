@@ -4,8 +4,10 @@ import Router from 'vue-router'
 import Home from '~/pages/Home.vue'
 import Search from '~/pages/Search.vue'
 import Category from '~/pages/Category.vue'
-import Book from '~/pages/Book.vue'
-import Chapter from '~/pages/Chapter.vue'
+import BookDetail from '~/pages/Book/BookDetail.vue'
+import BookList from '~/pages/Book/BookList.vue'
+import ChapterDetail from '~/pages/Chapter/ChapterDetail.vue'
+import ChapterList from '~/pages/Chapter/ChapterList.vue'
 
 Vue.use(Router)
 
@@ -21,19 +23,29 @@ const routes = [
     component: Search,
   },
   {
-    path: '/category',
+    path: '/categories',
     name: 'Category',
     component: Category,
   },
   {
-    path: '/book/:book_id',
+    path: '/books',
     name: 'Book',
-    component: Book,
+    component: BookList,
   },
   {
-    path: '/book/:book_id/:chapter_id',
+    path: '/books/:book_id',
+    name: 'Book',
+    component: BookDetail,
+  },
+  {
+    path: '/chapters',
     name: 'Chapter',
-    component: Chapter,
+    component: ChapterList,
+  },
+  {
+    path: '/chapters/:chapter_id',
+    name: 'Chapter',
+    component: ChapterDetail,
   },
 ]
 
