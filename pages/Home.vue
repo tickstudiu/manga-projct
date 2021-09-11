@@ -5,9 +5,9 @@
       <input type="text" placeholder="search" class="flex-1 border" v-model="keyword"/>
       <button class="border px-3">submit</button>
       <client-only>
-        <select v-model="category">
+        <select v-model="status">
           <option value="" disabled>select one</option>
-          <option v-for="(category, index) in Object.values(categories)" :key="index" :value="category">{{category}}</option>
+          <option v-for="(status, index) in Object.values(searchStatus)" :key="index" :value="status">{{status}}</option>
         </select>
       </client-only>
     </form>
@@ -41,7 +41,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import BookCard from '@/components/books/BookCard.vue'
-import {categories} from '@/enums/categories'
+import {searchStatus} from '@/enums/searchTypes'
 export default Vue.extend({
   components: {
     BookCard,
@@ -49,15 +49,15 @@ export default Vue.extend({
 
   data(){
     return {
-      categories,
-      category: '',
+      searchStatus,
+      status: '',
       keyword: '',
     }
   },
 
   methods: {
     onSubmit() {
-      console.log('test')
+      window.location.href = `/search?type=${this.status}&value=${this.keyword}`
     }
   }
 })

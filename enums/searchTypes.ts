@@ -5,7 +5,7 @@
  */
 export enum searchStatus {
     AUTHOR = 'author',
-    PROJECT = 'project',
+    BOOK = 'book',
     TAG = 'tag',
 }
 
