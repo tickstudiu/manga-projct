@@ -1,11 +1,11 @@
 export interface BookItem {
     id: number
-    categoryId: number
+    categories: number[]
     isNew: boolean
     tags: number[]
     authors: number[]
     title: string
     titleSlug: string
-    status: string
+    status: number[]
     summary: string
 }

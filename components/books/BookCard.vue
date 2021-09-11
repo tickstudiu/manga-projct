@@ -2,7 +2,7 @@
   <div class="border p-3 cursor-pointer" @click="bookUrl">
     <h6>{{ book.title }}</h6>
     <p>status: {{ book.status }}</p>
-    <p>author: {{ book.authors }}</p>
+    <p>authors: {{ book.authors }}</p>
   </div>
 </template>
 

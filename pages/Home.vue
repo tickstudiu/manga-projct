@@ -2,9 +2,9 @@
   <div class="home">
 
     <!-- new book -->
-    <div class="flex justify-between items-baseline">
+    <div class="flex justify-between items-baseline mb-6">
       <h2>new books</h2>
-      <nuxt-link to="/books?filter=new" class="hover:underline">
+      <nuxt-link to="/books?type=new&tag=all" class="hover:underline">
         more
       </nuxt-link>
     </div>
@@ -23,9 +23,9 @@
     <hr class="my-6" />
 
     <!-- all chapters order by dec -->
-    <div class="flex justify-between items-baseline">
+    <div class="flex justify-between items-baseline mb-6">
       <h2>last updated chapters</h2>
-      <nuxt-link to="/chapters?filter=last-updated" class="hover:underline">
+      <nuxt-link to="/chapters?type=last-updated&tag=all" class="hover:underline">
         more
       </nuxt-link>
     </div>
