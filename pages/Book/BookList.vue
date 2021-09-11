@@ -40,7 +40,7 @@
         </button>
       </div>
 
-      <div v-if="toggleFilter">
+      <div v-if="toggleFilter" class="p-3 mt-3 border">
         <div>
           <h6>type</h6>
           <ul class="grid grid-cols-3">
