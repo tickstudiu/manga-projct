@@ -16,12 +16,12 @@ const routes = [
     component: Home,
   },
   {
-    path: '/search/:type/:value',
+    path: '/search',
     name: 'Search',
     component: Search,
   },
   {
-    path: '/category/:category',
+    path: '/category',
     name: 'Category',
     component: Category,
   },

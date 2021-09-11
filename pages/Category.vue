@@ -1,7 +1,8 @@
 <template>
   <div class="category">
     Category
-    <p>{{ $route.params.category }}</p>
+    <!-- http://localhost:8080/category?value=category -->
+    <p>{{ $route.query.value }}</p>
   </div>
 </template>
 
