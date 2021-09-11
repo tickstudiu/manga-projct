@@ -1,8 +1,6 @@
 <template>
   <div class="chapter">
-    Chapter
-    <p>{{ $route.params.book_id }}</p>
-    <p>{{ $route.params.chapter_id }}</p>
+    <p>chapter id : {{ $route.params.chapter_id }}</p>
   </div>
 </template>
 
