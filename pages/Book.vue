@@ -1,7 +1,6 @@
 <template>
-  <div class="category">
-    Category
-    <p>{{ $route.params.category }}</p>
+  <div class="book">
+    <p>book id : {{ $route.params.book_id }}</p>
   </div>
 </template>
 

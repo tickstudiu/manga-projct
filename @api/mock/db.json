@@ -49,7 +49,6 @@
   "chapters": [
     {
       "id": 1,
-      "categoryId": 1,
       "projectId": 1,
       "countPage": 1,
       "view": 0,
