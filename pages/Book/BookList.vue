@@ -112,6 +112,12 @@
     </template>
     <template v-else-if="!books.length && !isLoading"> empty </template>
     <template v-else> loading... </template>
+
+    <!-- pagination -->
+    <Pagination
+      @next="changePage((Number($route.query.page) || 1) + 1)"
+      @prev="changePage((Number($route.query.page) || 1) - 1)"
+    />
   </div>
 </template>
 
@@ -120,9 +126,11 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 import BookCard from '@/components/books/BookCard.vue'
 import { searchStatus } from '@/enums/searchTypes'
+import Pagination from '@/components/Pagination.vue'
 export default Vue.extend({
   components: {
     BookCard,
+    Pagination,
   },
 
   data() {
@@ -218,6 +226,20 @@ export default Vue.extend({
           query: {
             ...this.$route.query,
             status: value,
+          },
+        })
+        .then(() => {
+          this.$fetch()
+        })
+    },
+
+    changePage(newPage: any) {
+      this.$router
+        .push({
+          path: this.$route.path,
+          query: {
+            ...this.$route.query,
+            page: newPage.toString(),
           },
         })
         .then(() => {

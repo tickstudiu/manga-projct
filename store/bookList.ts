@@ -48,8 +48,8 @@ export default {
 
         async fetch(
             { commit, state, dispatch }: any,
-            { type = 'new', tag = 'all', category = 'all', status = 'all' }:
-                { type?: string, tag?: string, category?: string, status?: string }
+            { type = 'new', tag = 'all', category = 'all', status = 'all', page = '1'}:
+                { type?: string, tag?: string, category?: string, status?: string, page?: string }
         ) {
             commit('SET_LOADING', true)
 
@@ -64,7 +64,12 @@ export default {
                 const filterCategory = state.categories.find((item: CategoryItem) => item.category === category)
                 const filterTag = state.tags.find((item: TagItem) => item.tag === tag)
 
-                const responseBooks = await app.$services.book.allNew({  tagId: filterTag.id, categoryId: filterCategory.id, statusId: filterStatus.id })
+                const responseBooks = await app.$services.book.allNew({ 
+                    tagId: filterTag.id, 
+                    categoryId: filterCategory.id, 
+                    statusId: filterStatus.id, 
+                    page: Number(page) 
+                })
 
                 commit('SET_BOOKS', responseBooks)
 
