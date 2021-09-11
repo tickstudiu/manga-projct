@@ -6,7 +6,6 @@
 export enum searchStatus {
     AUTHOR = 'author',
     BOOK = 'book',
-    TAG = 'tag',
 }
 
 export default searchStatus
