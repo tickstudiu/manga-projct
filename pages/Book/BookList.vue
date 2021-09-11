@@ -34,8 +34,10 @@
           class="border px-3"
           @click="toggleFilter = !toggleFilter"
           @keydown="toggleFilter = !toggleFilter"
+          :disabled="isLoading"
         >
-          toggle
+          <template v-if="!isLoading"> toggle </template>
+          <template v-else> loading... </template>
         </button>
       </div>
 
@@ -43,10 +45,18 @@
         <div>
           <h6>type</h6>
           <ul class="grid grid-cols-3">
-            <li>
+            <li
+              class="item"
+              :class="{ active: queryType === 'new' }"
+              @click.prevent="changeType('new')"
+            >
               new
             </li>
-            <li>
+            <li
+              class="item"
+              :class="{ active: queryType === 'top-view' }"
+              @click.prevent="changeType('top-view')"
+            >
               top view
             </li>
           </ul>
@@ -55,7 +65,13 @@
         <div>
           <h6>category</h6>
           <ul class="grid grid-cols-3">
-            <li v-for="item in categories" :key="item.category">
+            <li
+              v-for="item in categories"
+              :key="item.category"
+              class="item"
+              :class="{ active: queryCategory === item.category }"
+              @click.prevent="changeCategory(item)"
+            >
               {{ item.category }}
             </li>
           </ul>
@@ -64,14 +80,30 @@
         <div>
           <h6>status</h6>
           <ul class="grid grid-cols-3">
-            <li v-for="item in status" :key="item.status">{{ item.status }}</li>
+            <li
+              v-for="item in status"
+              :key="item.status"
+              class="item"
+              :class="{ active: queryStatus === item.status }"
+              @click.prevent="changeStatus(item)"
+            >
+              {{ item.status }}
+            </li>
           </ul>
         </div>
 
         <div>
           <h6>tags</h6>
           <ul class="grid grid-cols-3">
-            <li v-for="item in tags" :key="item.tag">{{ item.tag }}</li>
+            <li
+              v-for="item in tags"
+              :key="item.tag"
+              class="item"
+              :class="{ active: queryTag === item.tag }"
+              @click.prevent="changeTag(item)"
+            >
+              {{ item.tag }}
+            </li>
           </ul>
         </div>
       </div>
@@ -121,12 +153,76 @@ export default Vue.extend({
       'status',
       'categories',
     ]),
+
+    queryType(): string {
+      return this.$route.query.type?.toString() || 'new'
+    },
+
+    queryCategory(): string {
+      return this.$route.query.category?.toString() || 'all'
+    },
+
+    queryTag(): string {
+      return this.$route.query.tag?.toString() || 'all'
+    },
+
+    queryStatus(): string {
+      return this.$route.query.status?.toString() || 'all'
+    },
   },
 
   methods: {
     onSubmit() {
       window.location.href = `/search?type=${this.status}&value=${this.keyword}`
     },
+
+    changeType(value: string) {
+      this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          type: value.toString(),
+        },
+      })
+    },
+
+    changeTag(value: any) {
+      this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          tag: value.tag.toString(),
+        },
+      })
+    },
+    
+    changeCategory(value: any) {
+      this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          category: value.category.toString(),
+        },
+      })
+    },
+
+    changeStatus(value: any) {
+      this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          status: value.status.toString(),
+        },
+      })
+    },
   },
 })
 </script>
+
+<style lang="sass" scoped>
+.item
+  &:not(.active):hover
+    @apply underline
+  &.active
+    @apply underline
+</style>
