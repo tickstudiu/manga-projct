@@ -10,4 +10,10 @@ export const menu: Menu[] = [
             name: 'Home',
         },
     },
+    {
+        name: 'category',
+        link: {
+            name: 'Category',
+        },
+    },
 ]

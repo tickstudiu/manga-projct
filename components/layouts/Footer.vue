@@ -1,3 +1,3 @@
 <template>
-    <div>footer</div>
+    <div class="text-center">footer</div>
 </template>
