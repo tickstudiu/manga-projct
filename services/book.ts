@@ -2,14 +2,8 @@ import { pagination } from '@/config/pagination'
 
 export default ($axios: any) => {
     return {
-        all({ 
-            limit = pagination.limit,
-            page = 1
-        }: { 
-            limit?: number,
-            page?: number
-        }) {
-            return $axios.$get(`/books?_page=${page}_limit=${limit}`)
+        all() {
+            return $axios.$get(`/books`)
         },
         titleSearch({
             limit = pagination.limit,
