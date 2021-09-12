@@ -44,7 +44,7 @@ export default Vue.extend({
 
   methods: {
     bookUrl() {
-      this.$router.push(`/books/${this.book.id}`)
+      window.location.href = `/books/${this.book.id}`
     },
   },
 })
