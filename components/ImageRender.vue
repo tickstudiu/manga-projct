@@ -13,13 +13,12 @@
 
 <script lang="ts">
 import Vue, { PropOptions } from 'vue'
-import { PageItem } from '@/types/chapter'
 export default Vue.extend({
   props: {
-    page: {
+    image: {
       type: Object,
       default: null,
-    } as PropOptions<PageItem>,
+    } as PropOptions<any>,
   },
 
   data() {
@@ -31,8 +30,8 @@ export default Vue.extend({
   computed: {
     thumbnail(): any {
       return {
-        url: this.page?.pageUrl,
-        alt: this.page?.alt || 'iamge',
+        url: this.image?.pageUrl,
+        alt: this.image?.alt || 'iamge',
       }
     },
   },

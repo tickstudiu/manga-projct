@@ -2,7 +2,7 @@
   <div class="border p-3 cursor-pointer" @click="chapterUrl">
     <h6 class="mb-3">{{ chapter.name }}</h6>
     <p :class="{'mb-3': showBook}">view: {{ chapter.view }}</p>
-    <div class="flex gap-3" v-if="showBook">
+    <div class="flex flex-wrap gap-3" v-if="showBook">
       <p>book:</p>
       <ChapterBook :id="chapter.bookId" />
     </div>
