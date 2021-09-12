@@ -6,6 +6,10 @@
       <BookCategory v-for="item in book.categories" :key="item" :id="item"/>
     </div>
     <div class="flex gap-3 mb-3">
+      <p>status:</p>
+      <BookStatus v-for="item in book.status" :key="item" :id="item" />
+    </div>
+    <div class="flex gap-3 mb-3">
       <p>tags:</p>
       <BookTag v-for="item in book.tags" :key="item" :id="item" />
     </div>
@@ -22,11 +26,13 @@ import { BookItem } from '@/types/book'
 import BookCategory from '@/components/books/BookCategory.vue'
 import BookTag from '@/components/books/BookTag.vue'
 import BookAuthor from '@/components/books/BookAuthor.vue'
+import BookStatus from '@/components/books/BookStatus.vue'
 export default Vue.extend({
   components: {
     BookCategory,
     BookTag,
-    BookAuthor
+    BookAuthor,
+    BookStatus
   },
 
   props: {

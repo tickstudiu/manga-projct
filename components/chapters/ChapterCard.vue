@@ -1,8 +1,8 @@
 <template>
   <div class="border p-3 cursor-pointer" @click="chapterUrl">
     <h6 class="mb-3">{{ chapter.name }}</h6>
-    <p class="mb-3">view: {{ chapter.view }}</p>
-    <div class="flex gap-3 mb-3">
+    <p :class="{'mb-3': showBook}">view: {{ chapter.view }}</p>
+    <div class="flex gap-3" v-if="showBook">
       <p>book:</p>
       <ChapterBook :id="chapter.bookId" />
     </div>
@@ -23,6 +23,10 @@ export default Vue.extend({
       type: Object,
       default: null,
     } as PropOptions<ChapterItem>,
+    showBook: {
+      type: Boolean,
+      default: false
+    } as PropOptions<boolean>
   },
 
   methods: {

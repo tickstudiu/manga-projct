@@ -33,6 +33,7 @@
         v-for="(chapter, index) in chapters"
         :key="index"
         :chapter="chapter"
+        :showBook="true"
       />
     </template>
     <template v-else-if="!chapters.length && !isLoading"> empty </template>

@@ -7,6 +7,10 @@
       <BookCategory v-for="item in book.categories" :key="item" :id="item" />
     </div>
     <div class="flex gap-3 mb-3">
+      <p>status:</p>
+      <BookStatus v-for="item in book.status" :key="item" :id="item" />
+    </div>
+    <div class="flex gap-3 mb-3">
       <p>tags:</p>
       <BookTag v-for="item in book.tags" :key="item" :id="item" />
     </div>
@@ -46,6 +50,7 @@ import BookCategory from '@/components/books/BookCategory.vue'
 import BookTag from '@/components/books/BookTag.vue'
 import ChapterCard from '@/components/chapters/ChapterCard.vue'
 import BookAuthor from '@/components/books/BookAuthor.vue'
+import BookStatus from '@/components/books/BookStatus.vue'
 import Pagination from '@/components/Pagination.vue'
 export default Vue.extend({
   components: {
@@ -54,6 +59,7 @@ export default Vue.extend({
     BookAuthor,
     ChapterCard,
     Pagination,
+    BookStatus
   },
 
   async fetch() {
