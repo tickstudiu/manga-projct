@@ -50,14 +50,14 @@ export default Vue.extend({
   },
 
   async fetch() {
-    await this.$store.dispatch('chapterDetail/fetch', {
+    await this.$store.dispatch('view/chapterDetail/fetch', {
       chapterId: this.$route.params.chapter_id,
       bookId: this.$route.params.book_id,
     })
   },
 
   computed: {
-    ...mapState('chapterDetail', ['isLoading', 'chapter', 'book', 'isError']),
+    ...mapState('view/chapterDetail', ['isLoading', 'chapter', 'book', 'isError']),
   },
 
   methods: {

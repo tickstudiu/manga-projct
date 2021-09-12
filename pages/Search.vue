@@ -47,11 +47,11 @@ export default Vue.extend({
   },
 
   async fetch() {
-    await this.$store.dispatch('search/fetch', this.$route.query)
+    await this.$store.dispatch('view/search/fetch', this.$route.query)
   },
 
   computed: {
-    ...mapState('search', ['isLoading', 'books']),
+    ...mapState('view/search', ['isLoading', 'books']),
   },
 
   methods: {

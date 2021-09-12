@@ -131,11 +131,11 @@ export default Vue.extend({
   },
 
   async fetch() {
-    await this.$store.dispatch('bookList/fetch', this.$route.query)
+    await this.$store.dispatch('view/bookList/fetch', this.$route.query)
   },
 
   computed: {
-    ...mapState('bookList', [
+    ...mapState('view/bookList', [
       'isLoading',
       'books',
       'tags',

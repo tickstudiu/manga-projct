@@ -53,11 +53,11 @@ export default Vue.extend({
   },
 
   async fetch() {
-    await this.$store.dispatch('home/fetch')
+    await this.$store.dispatch('view/home/fetch')
   },
 
   computed: {
-    ...mapState('home', ['isLoading', 'chapters', 'books']),
+    ...mapState('view/home', ['isLoading', 'chapters', 'books']),
   },
 })
 </script>
