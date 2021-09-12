@@ -1,11 +1,11 @@
 <template>
-  <div class="border px-3" v-if="!$fetchState.pending">{{ item.status }}</div>
+  <div class="border px-3" v-if="!isLoading">{{ getStatus(id).status }}</div>
   <div class="border px-3" v-else>loading...</div>
 </template>
 
 <script lang="ts">
 import Vue, { PropOptions } from 'vue'
-import { StatusItem } from '@/types/status'
+import { mapState, mapGetters } from 'vuex'
 export default Vue.extend({
   props: {
     id: {
@@ -14,18 +14,13 @@ export default Vue.extend({
     } as PropOptions<number>,
   },
 
-  data() {
-    return {
-      item: {} as StatusItem,
-    }
-  },
-
   async fetch() {
-    const res = await this.$services.status.byId({ id: this.id })
-
-    this.$nextTick(() => {
-      this.item = res
-    })
+    await this.$store.dispatch('status/fetch')
   },
+
+  computed: {
+    ...mapState('status', ['isLoading']),
+    ...mapGetters('status', ['getStatus'])
+  }
 })
 </script>

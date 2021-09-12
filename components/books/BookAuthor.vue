@@ -1,11 +1,11 @@
 <template>
-  <div class="border px-3" v-if="!$fetchState.pending">{{ item.author }}</div>
+  <div class="border px-3" v-if="!isLoading">{{ getAuthor(id).author }}</div>
   <div class="border px-3" v-else>loading...</div>
 </template>
 
 <script lang="ts">
 import Vue, { PropOptions } from 'vue'
-import { AuthorItem } from '@/types/author'
+import { mapState, mapGetters } from 'vuex'
 export default Vue.extend({
   props: {
     id: {
@@ -14,18 +14,13 @@ export default Vue.extend({
     } as PropOptions<number>,
   },
 
-  data() {
-    return {
-      item: {} as AuthorItem,
-    }
-  },
-
   async fetch() {
-    const res = await this.$services.author.byId({ id: this.id })
-
-    this.$nextTick(() => {
-      this.item = res
-    })
+    await this.$store.dispatch('author/fetch')
   },
+
+  computed: {
+    ...mapState('author', ['isLoading']),
+    ...mapGetters('author', ['getAuthor'])
+  }
 })
 </script>

@@ -19,13 +19,13 @@ export default {
         SET_BOOKS(state: any, payload: BookItem[]) {
             state.books = payload
         },
-        SET_STATUS(state: any, payload: BookItem[]) {
+        SET_STATUS(state: any, payload: StatusItem[]) {
             state.status = payload
         },
-        SET_TAGS(state: any, payload: BookItem[]) {
+        SET_TAGS(state: any, payload: TagItem[]) {
             state.tags = payload
         },
-        SET_CATEGORIES(state: any, payload: BookItem[]) {
+        SET_CATEGORIES(state: any, payload: CategoryItem[]) {
             state.categories = payload
         },
     },
