@@ -9,16 +9,6 @@
         v-model="keyword"
       />
       <button class="border px-3">submit</button>
-      <select v-model="type">
-        <option value="" disabled>select one</option>
-        <option
-          v-for="(status, index) in Object.values(searchStatus)"
-          :key="index"
-          :value="status"
-        >
-          {{ status }}
-        </option>
-      </select>
     </form>
 
     <!-- header -->
@@ -125,7 +115,6 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import BookCard from '@/components/books/BookCard.vue'
-import { searchStatus } from '@/enums/searchTypes'
 import Pagination from '@/components/Pagination.vue'
 export default Vue.extend({
   components: {
@@ -135,7 +124,6 @@ export default Vue.extend({
 
   data() {
     return {
-      searchStatus,
       type: '',
       keyword: '',
       toggleFilter: false,
@@ -174,7 +162,7 @@ export default Vue.extend({
 
   methods: {
     onSubmit() {
-      window.location.href = `/search?type=${this.type}&value=${this.keyword}`
+      window.location.href = `/search?value=${this.keyword}`
     },
 
     changeType(value: string) {

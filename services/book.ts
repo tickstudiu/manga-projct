@@ -11,6 +11,17 @@ export default ($axios: any) => {
         }) {
             return $axios.$get(`/books?_page=${page}_limit=${limit}`)
         },
+        titleSearch({
+            limit = pagination.limit,
+            page = 1,
+            value
+        }: {
+            limit?: number,
+            page?: number,
+            value: string
+        }) {
+            return $axios.$get(`/books?_page=${page}_limit=${limit}&title_like=${value}`)
+        },
         byId({ id }: { id: string }) {
             return $axios.$get(`/books/${id}`)
         },
