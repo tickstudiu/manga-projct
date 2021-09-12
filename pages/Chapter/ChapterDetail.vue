@@ -1,19 +1,27 @@
 <template>
-  <div class="chapter-detail">
+  <div class="chapter-detail" v-if="!isError">
     <!-- chapter detail -->
-    <h3 class="mb-3">
-      {{ book.title }}
-    </h3>
-    <p class="mb-3">chapter {{ chapter.ep }} : {{ chapter.name }}</p>
+    <template v-if="!isLoading">
+      <h3 class="mb-3">
+        {{ chapterTitle }}
+      </h3>
+      <p class="mb-3">chapter {{ chapterEp }} : {{ chapterName }}</p>
+    </template>
+    <template v-else> loading ... </template>
 
     <!-- image list -->
-    <template v-if="!isLoading">
+    <template
+      v-if="!isLoading && chapter.pages && chapter.pages.length"
+    >
       <ImageRender
         class="mb-3"
         v-for="(page, index) in chapter.pages"
         :key="index"
         :page="page"
       />
+    </template>
+    <template v-else-if="!isLoading && !chapter.pages">
+      empty
     </template>
     <template v-else> loading... </template>
 
@@ -23,6 +31,10 @@
       @next="changeChapter(Number($route.params.chapter_id) + 1)"
       @prev="changeChapter(Number($route.params.chapter_id) - 1)"
     />
+  </div>
+  <div class="chapter-detail" v-else>
+    <!-- todo -->
+    <p class="text-center">error</p>
   </div>
 </template>
 
@@ -45,7 +57,19 @@ export default Vue.extend({
   },
 
   computed: {
-    ...mapState('chapterDetail', ['isLoading', 'chapter', 'book']),
+    ...mapState('chapterDetail', ['isLoading', 'chapter', 'book', 'isError']),
+
+    chapterTitle(): string {
+      return this.book?.title || ''
+    },
+
+    chapterEp(): number {
+      return this.chapter?.ep || 0
+    },
+
+    chapterName(): string {
+      return this.chapter?.name || ''
+    },
   },
 
   methods: {

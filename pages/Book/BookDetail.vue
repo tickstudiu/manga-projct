@@ -1,5 +1,5 @@
 <template>
-  <div class="book-detail">
+  <div class="book-detail" v-if="!isError">
     <!-- book detail -->
     <h6 class="mb-3">{{ book.title }}</h6>
     <div class="flex gap-3 mb-3">
@@ -41,6 +41,10 @@
       @prev="changePage((Number($route.query.page) || 1) - 1)"
     />
   </div>
+  <div class="book-detail" v-else>
+    <!-- todo -->
+    <p class="text-center">error</p>
+  </div>
 </template>
 
 <script lang="ts">
@@ -70,7 +74,7 @@ export default Vue.extend({
   },
 
   computed: {
-    ...mapState('bookDetail', ['isLoading', 'book', 'chapters']),
+    ...mapState('bookDetail', ['isLoading', 'isError', 'book', 'chapters']),
   },
 
   methods: {

@@ -3,12 +3,16 @@ import { ChapterItem } from '@/types/chapter'
 
 export default {
     state: () => ({
+        isError: false,
         isLoading: false,
-        books: {} as BookItem,
+        book: {} as BookItem,
         chapter: {} as ChapterItem,
     }),
 
     mutations: {
+        SET_ERROR(state: any, payload: boolean = true) {
+            state.isError = payload
+        },
         SET_LOADING(state: any, payload: boolean = false) {
             state.isLoading = payload
         },
@@ -42,7 +46,8 @@ export default {
 
                 commit('SET_LOADING')
             } catch {
-                // do something
+                // do something   
+                commit('SET_ERROR')
 
                 commit('SET_LOADING')
             }
