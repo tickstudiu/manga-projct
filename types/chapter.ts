@@ -3,6 +3,7 @@ export interface PageItem {
     width: number
     height: number
     pageUrl: string
+    alt?: string
 }
 
 export interface ChapterItem {

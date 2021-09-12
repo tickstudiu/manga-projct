@@ -81,6 +81,7 @@
         {
           "id": 1,
           "pageUrl": "/",
+          "alt": null,
           "height": 1200,
           "width": 800
         }
@@ -97,6 +98,7 @@
         {
           "id": 1,
           "pageUrl": "/",
+          "alt": null,
           "height": 1200,
           "width": 800
         }
