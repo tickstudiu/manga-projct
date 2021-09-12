@@ -37,7 +37,7 @@ const routes = [
     component: BookDetail,
   },
   {
-    path: '/chapters/:chapter_id',
+    path: '/books/:book_id/:chapter_id',
     name: 'ChaptersDetail',
     component: ChapterDetail,
   },
