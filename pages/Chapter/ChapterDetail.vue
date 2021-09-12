@@ -3,9 +3,9 @@
     <!-- chapter detail -->
     <template v-if="!isLoading">
       <h3 class="mb-3">
-        {{ chapterTitle }}
+        {{ book.title }}
       </h3>
-      <p class="mb-3">chapter {{ chapterEp }} : {{ chapterName }}</p>
+      <p class="mb-3">chapter {{ chapter.ep }} : {{ chapter.name }}</p>
     </template>
     <template v-else> loading ... </template>
 
@@ -17,7 +17,7 @@
         class="mb-3"
         v-for="(page, index) in chapter.pages"
         :key="index"
-        :page="page"
+        :image="page"
       />
     </template>
     <template v-else-if="!isLoading && !chapter.pages">
@@ -58,18 +58,6 @@ export default Vue.extend({
 
   computed: {
     ...mapState('chapterDetail', ['isLoading', 'chapter', 'book', 'isError']),
-
-    chapterTitle(): string {
-      return this.book?.title || ''
-    },
-
-    chapterEp(): number {
-      return this.chapter?.ep || 0
-    },
-
-    chapterName(): string {
-      return this.chapter?.name || ''
-    },
   },
 
   methods: {

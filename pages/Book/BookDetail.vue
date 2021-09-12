@@ -1,6 +1,10 @@
 <template>
   <div class="book-detail" v-if="!isError">
     <!-- book detail -->
+    <ImageRender
+        class="mb-3"
+        :image="book.cover"
+      />
     <h6 class="mb-3">{{ book.title }}</h6>
     <div class="flex gap-3 mb-3">
       <p>categories:</p>
@@ -50,6 +54,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapState } from 'vuex'
+import ImageRender from '@/components/ImageRender.vue'
 import BookCategory from '@/components/books/BookCategory.vue'
 import BookTag from '@/components/books/BookTag.vue'
 import ChapterCard from '@/components/chapters/ChapterCard.vue'
@@ -63,7 +68,8 @@ export default Vue.extend({
     BookAuthor,
     ChapterCard,
     Pagination,
-    BookStatus
+    BookStatus,
+    ImageRender
   },
 
   async fetch() {
