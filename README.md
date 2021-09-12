@@ -1,4 +1,4 @@
-# simple-login
+# manga-project
 
 ## Build Setup
 
