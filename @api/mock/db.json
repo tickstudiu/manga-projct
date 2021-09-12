@@ -73,14 +73,29 @@
     {
       "id": 1,
       "bookId": 1,
-      "countPage": 1,
+      "ep": 1,
+      "countPage": 3,
       "view": 0,
       "status": "open",
       "name": "name",
       "pages": [
         {
           "id": 1,
-          "pageUrl": "/",
+          "pageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
+          "alt": null,
+          "height": 1200,
+          "width": 800
+        },
+        {
+          "id": 2,
+          "pageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
+          "alt": null,
+          "height": 1200,
+          "width": 800
+        },
+        {
+          "id": 3,
+          "pageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
           "alt": null,
           "height": 1200,
           "width": 800
@@ -90,14 +105,15 @@
     {
       "id": 2,
       "bookId": 1,
+      "ep": 2,
       "countPage": 1,
       "view": 0,
       "status": "open",
-      "name": "name 2",
+      "name": "name",
       "pages": [
         {
           "id": 1,
-          "pageUrl": "/",
+          "pageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg",
           "alt": null,
           "height": 1200,
           "width": 800

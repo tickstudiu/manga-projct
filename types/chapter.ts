@@ -9,6 +9,7 @@ export interface PageItem {
 export interface ChapterItem {
     id: number
     bookId: number
+    ep: number
     countPage: number
     view: number
     status: string
