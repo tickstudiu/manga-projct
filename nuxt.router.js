@@ -3,7 +3,6 @@ import Router from 'vue-router'
 
 import Home from '~/pages/Home.vue'
 import Search from '~/pages/Search.vue'
-import Category from '~/pages/Category.vue'
 import BookDetail from '~/pages/Book/BookDetail.vue'
 import BookList from '~/pages/Book/BookList.vue'
 import ChapterDetail from '~/pages/Chapter/ChapterDetail.vue'
@@ -20,11 +19,6 @@ const routes = [
     path: '/search',
     name: 'Search',
     component: Search,
-  },
-  {
-    path: '/categories',
-    name: 'Categories',
-    component: Category,
   },
   {
     path: '/books',
