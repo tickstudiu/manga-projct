@@ -35,57 +35,50 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import BookCard from '@/components/books/BookCard.vue'
-export default Vue.extend({ 
+export default Vue.extend({
   components: {
-    BookCard
+    BookCard,
   },
 
   data() {
     return {
-      keyword: '',
+      keyword: this.$route.query.value || '',
     }
   },
 
-  async fetch(){
+  async fetch() {
     await this.$store.dispatch('search/fetch', this.$route.query)
   },
 
   computed: {
-    ...mapState('search', [
-      'isLoading',
-      'books',
-    ]),
+    ...mapState('search', ['isLoading', 'books']),
   },
 
   methods: {
-    onSubmit() {
-      this.$router
-        .push({
-          path: this.$route.path,
-          query: {
-            ...this.$route.query,
-            value: this.keyword,
-          },
-        })
-        .then(() => {
-          this.$fetch()
-        })
+    async onSubmit() {
+      await this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          value: this.keyword,
+        },
+      })
+
+      this.$fetch()
     },
 
-    changePage(newPage: any) {
-      this.$router
-        .push({
-          path: this.$route.path,
-          query: {
-            ...this.$route.query,
-            page: newPage.toString(),
-          },
-        })
-        .then(() => {
-          this.$fetch()
-        })
+    async changePage(newPage: any) {
+      await this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          page: newPage.toString(),
+        },
+      })
+
+      this.$fetch()
     },
-  }
+  },
 })
 </script>
 

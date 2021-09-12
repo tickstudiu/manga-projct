@@ -165,74 +165,64 @@ export default Vue.extend({
       window.location.href = `/search?value=${this.keyword}`
     },
 
-    changeType(value: string) {
-      this.$router
-        .push({
-          path: this.$route.path,
-          query: {
-            ...this.$route.query,
-            type: value,
-          },
-        })
-        .then(() => {
-          this.$fetch()
-        })
+    async changeType(value: string) {
+      await this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          type: value,
+        },
+      })
+
+      this.$fetch()
     },
 
-    changeTag(value: string) {
-      this.$router
-        .push({
-          path: this.$route.path,
-          query: {
-            ...this.$route.query,
-            tag: value,
-          },
-        })
-        .then(() => {
-          this.$fetch()
-        })
+    async changeTag(value: string) {
+      await this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          tag: value,
+        },
+      })
+
+      this.$fetch()
     },
 
-    changeCategory(value: string) {
-      this.$router
-        .push({
-          path: this.$route.path,
-          query: {
-            ...this.$route.query,
-            category: value,
-          },
-        })
-        .then(() => {
-          this.$fetch()
-        })
+    async changeCategory(value: string) {
+      await this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          category: value,
+        },
+      })
+
+      this.$fetch()
     },
 
-    changeStatus(value: string) {
-      this.$router
-        .push({
-          path: this.$route.path,
-          query: {
-            ...this.$route.query,
-            status: value,
-          },
-        })
-        .then(() => {
-          this.$fetch()
-        })
+    async changeStatus(value: string) {
+      await this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          status: value,
+        },
+      })
+
+      this.$fetch()
     },
 
-    changePage(newPage: any) {
-      this.$router
-        .push({
-          path: this.$route.path,
-          query: {
-            ...this.$route.query,
-            page: newPage.toString(),
-          },
-        })
-        .then(() => {
-          this.$fetch()
-        })
+    async changePage(newPage: any) {
+      await this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          page: newPage.toString(),
+        },
+      })
+
+      this.$fetch()
     },
   },
 })

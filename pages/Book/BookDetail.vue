@@ -6,19 +6,19 @@
         :image="book.cover"
       />
     <h6 class="mb-3">{{ book.title }}</h6>
-    <div class="flex gap-3 mb-3">
+    <div class="flex flex-wrap gap-3 mb-3">
       <p>categories:</p>
       <BookCategory v-for="item in book.categories" :key="item" :id="item" />
     </div>
-    <div class="flex gap-3 mb-3">
+    <div class="flex flex-wrap gap-3 mb-3">
       <p>status:</p>
       <BookStatus v-for="item in book.status" :key="item" :id="item" />
     </div>
-    <div class="flex gap-3 mb-3">
+    <div class="flex flex-wrap gap-3 mb-3">
       <p>tags:</p>
       <BookTag v-for="item in book.tags" :key="item" :id="item" />
     </div>
-    <div class="flex gap-3">
+    <div class="flex flex-wrap gap-3">
       <p>authors:</p>
       <BookAuthor v-for="item in book.authors" :key="item" :id="item" />
     </div>
@@ -84,18 +84,16 @@ export default Vue.extend({
   },
 
   methods: {
-    changePage(newPage: any) {
-      this.$router
-        .push({
-          path: this.$route.path,
-          query: {
-            ...this.$route.query,
-            page: newPage.toString(),
-          },
-        })
-        .then(() => {
-          this.$fetch()
-        })
+    async changePage(newPage: any) {
+      await this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          page: newPage.toString(),
+        },
+      })
+
+      this.$fetch()
     },
   },
 })
